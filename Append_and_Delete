@@ -1,0 +1,60 @@
+# https://www.hackerrank.com/challenges/append-and-delete/problem
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the appendAndDelete function below.
+def appendAndDelete(s, t, k):
+    # take the lenght of s and t in ls and lt
+    ls = len(s)
+    lt = len(t)
+    
+    # initailize c as 0
+    c=0
+
+    # Best case and Return    
+    if ls+lt <= k:
+        return "Yes"
+    
+    # check for other conditions
+    # find minimum string and store it in 'n'
+    if ls < lt:
+        n = ls
+    else:
+        n = lt
+        
+    # check for common string from starting
+    for i in range(0,n):
+        if s[i] == t[i]:
+            c+=1
+        else:
+            break
+            
+    # check the second case:
+    x=k-(ls+lt-2*c)
+    if x>=0 and (x%2==0):
+        return "Yes"
+    else:
+        return "No"
+            
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    t = input()
+
+    k = int(input())
+
+    result = appendAndDelete(s, t, k)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
+# https://www.hackerrank.com/challenges/append-and-delete/problem
